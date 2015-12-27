@@ -1,0 +1,343 @@
+\hypertarget{_lesson17_8c}{}\section{Référence du fichier C\+:/src/\+Open\+G\+L/\+Lesson17/\+Lesson17.c}
+\label{_lesson17_8c}\index{C\+:/src/\+Open\+G\+L/\+Lesson17/\+Lesson17.\+c@{C\+:/src/\+Open\+G\+L/\+Lesson17/\+Lesson17.\+c}}
+
+
+Ouvre une simple fen�tre Windows et dessine des textes g�n�r�s en 2\+D Font, ainsi qu\textquotesingle{}une forme en rotation en forme de losange avec Open\+G\+L.  
+
+
+{\ttfamily \#include $<$windows.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$gl\textbackslash{}gl.\+h$>$}\\*
+{\ttfamily \#include $<$gl\textbackslash{}glu.\+h$>$}\\*
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+L\+R\+E\+S\+U\+L\+T C\+A\+L\+L\+B\+A\+C\+K \hyperlink{_lesson17_8c_a9135ea2a0d6fce68ba3b858226a31a4f}{Wnd\+Proc} (H\+W\+N\+D, U\+I\+N\+T, W\+P\+A\+R\+A\+M, L\+P\+A\+R\+A\+M)
+\item 
+bool \hyperlink{_lesson17_8c_a941c1d009d2671c295beefa35ac69b8c}{Ne\+He\+Load\+Bitmap2} (L\+P\+T\+S\+T\+R sz\+File\+Name, L\+P\+T\+S\+T\+R sz\+File\+Name1, G\+Luint $\ast$\hyperlink{_lesson17_8c_ad6c7fcc4f12ec28c6c68e0915f84eaed}{texid})
+\item 
+int \hyperlink{_lesson17_8c_a8dd15539ba90ae3670aa0a9f889d2236}{Load\+G\+L\+Textures} ()
+\item 
+G\+Lvoid \hyperlink{_lesson17_8c_aa90fba1d494d9474c883fbb29fe0ed53}{Build\+Font} (G\+Lvoid)
+\item 
+G\+Lvoid \hyperlink{_lesson17_8c_a29fd6b15a498074df9565150f5212475}{Kill\+Font} (G\+Lvoid)
+\item 
+G\+Lvoid \hyperlink{_lesson17_8c_a5bfe8f0ffa139b567a1422dccf606292}{gl\+Print} (G\+Lint x, G\+Lint y, char $\ast$string, int set)
+\item 
+G\+Lvoid \hyperlink{_lesson17_8c_a87bb84d489df61ed7b0c002584fd984f}{Re\+Size\+G\+L\+Scene} (G\+Lsizei width, G\+Lsizei height)
+\item 
+int \hyperlink{_lesson17_8c_aa4c387d3f1ebce6d57684b6a10c9b0ae}{Init\+G\+L} (G\+Lvoid)
+\item 
+int \hyperlink{_lesson17_8c_a52061247bdaeb770e3a1d59eefaad972}{Draw\+G\+L\+Scene} (G\+Lvoid)
+\item 
+G\+Lvoid \hyperlink{_lesson17_8c_af33a2273205c1491be5916d3091658e0}{Kill\+G\+L\+Window} (G\+Lvoid)
+\item 
+B\+O\+O\+L \hyperlink{_lesson17_8c_ae5f043c9df9b9e5e0e26d567feeeb1bc}{Create\+G\+L\+Window} (char $\ast$title, int width, int height, int bits, B\+O\+O\+L fullscreenflag)
+\item 
+int W\+I\+N\+A\+P\+I \hyperlink{_lesson17_8c_a661c2abc03926acfaeb93b4ae7db4943}{Win\+Main} (H\+I\+N\+S\+T\+A\+N\+C\+E \hyperlink{_lesson17_8c_a74029128723095e7bf00a71d46af8b24}{h\+Instance}, H\+I\+N\+S\+T\+A\+N\+C\+E h\+Prev\+Instance, L\+P\+S\+T\+R lp\+Cmd\+Line, int n\+Cmd\+Show)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+H\+D\+C \hyperlink{_lesson17_8c_a78f6446a0e13adc7b7b2f239112ac785}{h\+D\+C} =N\+U\+L\+L
+\item 
+H\+G\+L\+R\+C \hyperlink{_lesson17_8c_a874963259c7cd998acfe6e187fbdb4c1}{h\+R\+C} =N\+U\+L\+L
+\item 
+H\+W\+N\+D \hyperlink{_lesson17_8c_afec4341c234519e145bac6f0e5edaa51}{h\+Wnd} =N\+U\+L\+L
+\item 
+H\+I\+N\+S\+T\+A\+N\+C\+E \hyperlink{_lesson17_8c_a74029128723095e7bf00a71d46af8b24}{h\+Instance}
+\item 
+B\+O\+O\+L \hyperlink{_lesson17_8c_a55a8351b704275ad12988864918abb2a}{keys} \mbox{[}256\mbox{]}
+\item 
+B\+O\+O\+L \hyperlink{_lesson17_8c_a22389371583c4b8843e06da43399d6d9}{active} =T\+R\+U\+E
+\item 
+B\+O\+O\+L \hyperlink{_lesson17_8c_ab15a33c0173f2c5b6ac806c55cf7f0ba}{fullscreen} =T\+R\+U\+E
+\item 
+G\+Luint \hyperlink{_lesson17_8c_ae4cbdc51d2d504c24c15b22cf9861e8d}{base}
+\item 
+G\+Luint \hyperlink{_lesson17_8c_a6012578879a8218dde175d9cdf91a70a}{texture} \mbox{[}2\mbox{]}
+\item 
+G\+Luint \hyperlink{_lesson17_8c_ad6c7fcc4f12ec28c6c68e0915f84eaed}{texid} \mbox{[}2\mbox{]}
+\item 
+G\+Luint \hyperlink{_lesson17_8c_a8166a6eff3ba7dbe6db9caa81bdd4444}{loop}
+\item 
+G\+Lfloat \hyperlink{_lesson17_8c_a59cefa520aeacb29855dd1153f4b0efa}{cnt1}
+\item 
+G\+Lfloat \hyperlink{_lesson17_8c_a2498a8c276b89c99342a1f4ac31e4670}{cnt2}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Ouvre une simple fen�tre Windows et dessine des textes g�n�r�s en 2\+D Font, ainsi qu\textquotesingle{}une forme en rotation en forme de losange avec Open\+G\+L. 
+
+Comments manageable by Doxygen
+
+Modified smoothly by Thierry D\+E\+C\+H\+A\+I\+Z\+E
+
+Paradigm \+: obtain one source (only one !) compatible for multiple free C Compilers and provide for all users an development environment on Windows (64 bits compatible), the great Code\+::\+Blocks manager (version 13.\+12), and don\textquotesingle{}t use glaux.\+lib or glaux.\+dll.
+
+a) Mingw 32 and 64 bits \+: downloadable \href{http://sourceforge.net/projects/mingw/}{\tt http\+://sourceforge.\+net/projects/mingw/} b) Mingw 32 D\+E\+V-\/\+C\+P\+P \+: included in old Dev-\/\+Cpp \href{http://sourceforge.net/projects/devcpp/}{\tt http\+://sourceforge.\+net/projects/devcpp/} c) Mingw 32 C\+B \+: included in package Code\+::\+Blocks (version 13.\+12) \href{http://sourceforge.net/projects/codeblocks/files/Binaries/12.11/Windows/}{\tt http\+://sourceforge.\+net/projects/codeblocks/files/\+Binaries/12.\+11/\+Windows/} d) Borland C \+: downloadable \href{http://edn.embarcadero.com/article/20633}{\tt http\+://edn.\+embarcadero.\+com/article/20633} e) Digital Mars Compiler C \+: version 8.\+57 downloadable \href{http://www.digitalmars.com}{\tt http\+://www.\+digitalmars.\+com} f) Open\+Watcom \+: version 1.\+9 downloadable \href{http://openwatcom.mirror.fr/}{\tt http\+://openwatcom.\+mirror.\+fr/} Version 2.\+0 64bits seems very buggy !!! g) Lcc and Lcc64 \+: downloadable \href{http://www.cs.virginia.edu/~lcc-win32/}{\tt http\+://www.\+cs.\+virginia.\+edu/$\sim$lcc-\/win32/} h) Cygwin \+: downloadable \href{http://www.cygwin.com/install.html}{\tt http\+://www.\+cygwin.\+com/install.\+html} (setup.\+exe) i) Visual Studio 2005 + 64bits\+: express edition for free (my version 2005 is full not express) \href{http://www.microsoft.com/france/visual-studio/essayez/express.aspx}{\tt http\+://www.\+microsoft.\+com/france/visual-\/studio/essayez/express.\+aspx} j) T\+D\+M G\+C\+C 64 bits \+: downloadable on \href{http://sourceforge.net/projects/TDM-GCC}{\tt http\+://sourceforge.\+net/projects/\+T\+D\+M-\/\+G\+C\+C}
+
+Important remark \+: All install in C partition, \char`\"{}no space\char`\"{} and \char`\"{}no special characters\char`\"{} in the name of directories (it\textquotesingle{}s reason to not install in C\+: Files (x86) ... by default proposed on windows 64 bits)
+
+Add resource file end resource header for restitute version + icon Open\+G\+L.\+ico for fun because versionning is important, same for freeware \+:-\/) !
+
+Date \+: 2015/12/27
+
+\begin{DoxyAuthor}{Auteur}
+Jeff Molofee ( Ne\+He ) \& Giuseppe D\textquotesingle{}Agata originely, Modified for L\+C\+C\+Win32 compiler by Robert Wishlaw 2002/11/23 
+
+After adapted by Thierry Dechaize to verify paradigm \+: one source for multiple C Compilers 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0.\+1.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+27 d�cembre 2015
+\end{DoxyDate}
+Ce programme ne g�re que deux �v�nements \+: le clic sur le bouton \char`\"{}\+Ferm�\char`\"{} de la fen�tre, la sortie par la touche E\+S\+C. 
+
+\subsection{Documentation des fonctions}
+\hypertarget{_lesson17_8c_aa90fba1d494d9474c883fbb29fe0ed53}{}\index{Lesson17.\+c@{Lesson17.\+c}!Build\+Font@{Build\+Font}}
+\index{Build\+Font@{Build\+Font}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Build\+Font(\+G\+Lvoid)}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lvoid Build\+Font (
+\begin{DoxyParamCaption}
+\item[{G\+Lvoid}]{}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_aa90fba1d494d9474c883fbb29fe0ed53}
+
+
+Définition à la ligne 190 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_ae5f043c9df9b9e5e0e26d567feeeb1bc}{}\index{Lesson17.\+c@{Lesson17.\+c}!Create\+G\+L\+Window@{Create\+G\+L\+Window}}
+\index{Create\+G\+L\+Window@{Create\+G\+L\+Window}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Create\+G\+L\+Window(char $\ast$title, int width, int height, int bits, B\+O\+O\+L fullscreenflag)}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+L Create\+G\+L\+Window (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{title, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{int}]{bits, }
+\item[{B\+O\+O\+L}]{fullscreenflag}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_ae5f043c9df9b9e5e0e26d567feeeb1bc}
+This Code Creates Our Open\+G\+L Window. Parameters Are\+: $\ast$ title -\/ Title To Appear At The Top Of The Window $\ast$ width -\/ Width Of The G\+L Window Or Fullscreen Mode $\ast$ height -\/ Height Of The G\+L Window Or Fullscreen Mode $\ast$ bits -\/ Number Of Bits To Use For Color (8/16/24/32) $\ast$ fullscreenflag -\/ Use Fullscreen Mode (T\+R\+U\+E) Or Windowed Mode (F\+A\+L\+S\+E) 
+
+Définition à la ligne 380 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a52061247bdaeb770e3a1d59eefaad972}{}\index{Lesson17.\+c@{Lesson17.\+c}!Draw\+G\+L\+Scene@{Draw\+G\+L\+Scene}}
+\index{Draw\+G\+L\+Scene@{Draw\+G\+L\+Scene}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Draw\+G\+L\+Scene(\+G\+Lvoid)}]{\setlength{\rightskip}{0pt plus 5cm}int Draw\+G\+L\+Scene (
+\begin{DoxyParamCaption}
+\item[{G\+Lvoid}]{}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_a52061247bdaeb770e3a1d59eefaad972}
+
+
+Définition à la ligne 278 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a5bfe8f0ffa139b567a1422dccf606292}{}\index{Lesson17.\+c@{Lesson17.\+c}!gl\+Print@{gl\+Print}}
+\index{gl\+Print@{gl\+Print}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{gl\+Print(\+G\+Lint x, G\+Lint y, char $\ast$string, int set)}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lvoid gl\+Print (
+\begin{DoxyParamCaption}
+\item[{G\+Lint}]{x, }
+\item[{G\+Lint}]{y, }
+\item[{char $\ast$}]{string, }
+\item[{int}]{set}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_a5bfe8f0ffa139b567a1422dccf606292}
+
+
+Définition à la ligne 223 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_aa4c387d3f1ebce6d57684b6a10c9b0ae}{}\index{Lesson17.\+c@{Lesson17.\+c}!Init\+G\+L@{Init\+G\+L}}
+\index{Init\+G\+L@{Init\+G\+L}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Init\+G\+L(\+G\+Lvoid)}]{\setlength{\rightskip}{0pt plus 5cm}int Init\+G\+L (
+\begin{DoxyParamCaption}
+\item[{G\+Lvoid}]{}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_aa4c387d3f1ebce6d57684b6a10c9b0ae}
+
+
+Définition à la ligne 262 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a29fd6b15a498074df9565150f5212475}{}\index{Lesson17.\+c@{Lesson17.\+c}!Kill\+Font@{Kill\+Font}}
+\index{Kill\+Font@{Kill\+Font}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Kill\+Font(\+G\+Lvoid)}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lvoid Kill\+Font (
+\begin{DoxyParamCaption}
+\item[{G\+Lvoid}]{}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_a29fd6b15a498074df9565150f5212475}
+
+
+Définition à la ligne 218 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_af33a2273205c1491be5916d3091658e0}{}\index{Lesson17.\+c@{Lesson17.\+c}!Kill\+G\+L\+Window@{Kill\+G\+L\+Window}}
+\index{Kill\+G\+L\+Window@{Kill\+G\+L\+Window}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Kill\+G\+L\+Window(\+G\+Lvoid)}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lvoid Kill\+G\+L\+Window (
+\begin{DoxyParamCaption}
+\item[{G\+Lvoid}]{}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_af33a2273205c1491be5916d3091658e0}
+
+
+Définition à la ligne 330 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a8dd15539ba90ae3670aa0a9f889d2236}{}\index{Lesson17.\+c@{Lesson17.\+c}!Load\+G\+L\+Textures@{Load\+G\+L\+Textures}}
+\index{Load\+G\+L\+Textures@{Load\+G\+L\+Textures}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Load\+G\+L\+Textures()}]{\setlength{\rightskip}{0pt plus 5cm}int Load\+G\+L\+Textures (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_a8dd15539ba90ae3670aa0a9f889d2236}
+
+
+Définition à la ligne 166 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a941c1d009d2671c295beefa35ac69b8c}{}\index{Lesson17.\+c@{Lesson17.\+c}!Ne\+He\+Load\+Bitmap2@{Ne\+He\+Load\+Bitmap2}}
+\index{Ne\+He\+Load\+Bitmap2@{Ne\+He\+Load\+Bitmap2}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Ne\+He\+Load\+Bitmap2(\+L\+P\+T\+S\+T\+R sz\+File\+Name, L\+P\+T\+S\+T\+R sz\+File\+Name1, G\+Luint $\ast$texid)}]{\setlength{\rightskip}{0pt plus 5cm}bool Ne\+He\+Load\+Bitmap2 (
+\begin{DoxyParamCaption}
+\item[{L\+P\+T\+S\+T\+R}]{sz\+File\+Name, }
+\item[{L\+P\+T\+S\+T\+R}]{sz\+File\+Name1, }
+\item[{G\+Luint $\ast$}]{texid}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_a941c1d009d2671c295beefa35ac69b8c}
+
+
+Définition à la ligne 117 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a87bb84d489df61ed7b0c002584fd984f}{}\index{Lesson17.\+c@{Lesson17.\+c}!Re\+Size\+G\+L\+Scene@{Re\+Size\+G\+L\+Scene}}
+\index{Re\+Size\+G\+L\+Scene@{Re\+Size\+G\+L\+Scene}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Re\+Size\+G\+L\+Scene(\+G\+Lsizei width, G\+Lsizei height)}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lvoid Re\+Size\+G\+L\+Scene (
+\begin{DoxyParamCaption}
+\item[{G\+Lsizei}]{width, }
+\item[{G\+Lsizei}]{height}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_a87bb84d489df61ed7b0c002584fd984f}
+
+
+Définition à la ligne 248 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a661c2abc03926acfaeb93b4ae7db4943}{}\index{Lesson17.\+c@{Lesson17.\+c}!Win\+Main@{Win\+Main}}
+\index{Win\+Main@{Win\+Main}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Win\+Main(\+H\+I\+N\+S\+T\+A\+N\+C\+E h\+Instance, H\+I\+N\+S\+T\+A\+N\+C\+E h\+Prev\+Instance, L\+P\+S\+T\+R lp\+Cmd\+Line, int n\+Cmd\+Show)}]{\setlength{\rightskip}{0pt plus 5cm}int W\+I\+N\+A\+P\+I Win\+Main (
+\begin{DoxyParamCaption}
+\item[{H\+I\+N\+S\+T\+A\+N\+C\+E}]{h\+Instance, }
+\item[{H\+I\+N\+S\+T\+A\+N\+C\+E}]{h\+Prev\+Instance, }
+\item[{L\+P\+S\+T\+R}]{lp\+Cmd\+Line, }
+\item[{int}]{n\+Cmd\+Show}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_a661c2abc03926acfaeb93b4ae7db4943}
+
+
+Définition à la ligne 586 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a9135ea2a0d6fce68ba3b858226a31a4f}{}\index{Lesson17.\+c@{Lesson17.\+c}!Wnd\+Proc@{Wnd\+Proc}}
+\index{Wnd\+Proc@{Wnd\+Proc}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{Wnd\+Proc(\+H\+W\+N\+D, U\+I\+N\+T, W\+P\+A\+R\+A\+M, L\+P\+A\+R\+A\+M)}]{\setlength{\rightskip}{0pt plus 5cm}L\+R\+E\+S\+U\+L\+T C\+A\+L\+L\+B\+A\+C\+K Wnd\+Proc (
+\begin{DoxyParamCaption}
+\item[{H\+W\+N\+D}]{h\+Wnd, }
+\item[{U\+I\+N\+T}]{u\+Msg, }
+\item[{W\+P\+A\+R\+A\+M}]{w\+Param, }
+\item[{L\+P\+A\+R\+A\+M}]{l\+Param}
+\end{DoxyParamCaption}
+)}\label{_lesson17_8c_a9135ea2a0d6fce68ba3b858226a31a4f}
+
+
+Définition à la ligne 525 du fichier Lesson17.\+c.
+
+
+
+\subsection{Documentation des variables}
+\hypertarget{_lesson17_8c_a22389371583c4b8843e06da43399d6d9}{}\index{Lesson17.\+c@{Lesson17.\+c}!active@{active}}
+\index{active@{active}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{active}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+L active =T\+R\+U\+E}\label{_lesson17_8c_a22389371583c4b8843e06da43399d6d9}
+
+
+Définition à la ligne 83 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_ae4cbdc51d2d504c24c15b22cf9861e8d}{}\index{Lesson17.\+c@{Lesson17.\+c}!base@{base}}
+\index{base@{base}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{base}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint base}\label{_lesson17_8c_ae4cbdc51d2d504c24c15b22cf9861e8d}
+
+
+Définition à la ligne 86 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a59cefa520aeacb29855dd1153f4b0efa}{}\index{Lesson17.\+c@{Lesson17.\+c}!cnt1@{cnt1}}
+\index{cnt1@{cnt1}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{cnt1}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lfloat cnt1}\label{_lesson17_8c_a59cefa520aeacb29855dd1153f4b0efa}
+
+
+Définition à la ligne 90 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a2498a8c276b89c99342a1f4ac31e4670}{}\index{Lesson17.\+c@{Lesson17.\+c}!cnt2@{cnt2}}
+\index{cnt2@{cnt2}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{cnt2}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lfloat cnt2}\label{_lesson17_8c_a2498a8c276b89c99342a1f4ac31e4670}
+
+
+Définition à la ligne 91 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_ab15a33c0173f2c5b6ac806c55cf7f0ba}{}\index{Lesson17.\+c@{Lesson17.\+c}!fullscreen@{fullscreen}}
+\index{fullscreen@{fullscreen}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{fullscreen}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+L fullscreen =T\+R\+U\+E}\label{_lesson17_8c_ab15a33c0173f2c5b6ac806c55cf7f0ba}
+
+
+Définition à la ligne 84 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a78f6446a0e13adc7b7b2f239112ac785}{}\index{Lesson17.\+c@{Lesson17.\+c}!h\+D\+C@{h\+D\+C}}
+\index{h\+D\+C@{h\+D\+C}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{h\+D\+C}]{\setlength{\rightskip}{0pt plus 5cm}H\+D\+C h\+D\+C =N\+U\+L\+L}\label{_lesson17_8c_a78f6446a0e13adc7b7b2f239112ac785}
+
+
+Définition à la ligne 77 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a74029128723095e7bf00a71d46af8b24}{}\index{Lesson17.\+c@{Lesson17.\+c}!h\+Instance@{h\+Instance}}
+\index{h\+Instance@{h\+Instance}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{h\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}H\+I\+N\+S\+T\+A\+N\+C\+E h\+Instance}\label{_lesson17_8c_a74029128723095e7bf00a71d46af8b24}
+
+
+Définition à la ligne 80 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a874963259c7cd998acfe6e187fbdb4c1}{}\index{Lesson17.\+c@{Lesson17.\+c}!h\+R\+C@{h\+R\+C}}
+\index{h\+R\+C@{h\+R\+C}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{h\+R\+C}]{\setlength{\rightskip}{0pt plus 5cm}H\+G\+L\+R\+C h\+R\+C =N\+U\+L\+L}\label{_lesson17_8c_a874963259c7cd998acfe6e187fbdb4c1}
+
+
+Définition à la ligne 78 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_afec4341c234519e145bac6f0e5edaa51}{}\index{Lesson17.\+c@{Lesson17.\+c}!h\+Wnd@{h\+Wnd}}
+\index{h\+Wnd@{h\+Wnd}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{h\+Wnd}]{\setlength{\rightskip}{0pt plus 5cm}H\+W\+N\+D h\+Wnd =N\+U\+L\+L}\label{_lesson17_8c_afec4341c234519e145bac6f0e5edaa51}
+
+
+Définition à la ligne 79 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a55a8351b704275ad12988864918abb2a}{}\index{Lesson17.\+c@{Lesson17.\+c}!keys@{keys}}
+\index{keys@{keys}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{keys}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+L keys\mbox{[}256\mbox{]}}\label{_lesson17_8c_a55a8351b704275ad12988864918abb2a}
+
+
+Définition à la ligne 82 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a8166a6eff3ba7dbe6db9caa81bdd4444}{}\index{Lesson17.\+c@{Lesson17.\+c}!loop@{loop}}
+\index{loop@{loop}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{loop}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint loop}\label{_lesson17_8c_a8166a6eff3ba7dbe6db9caa81bdd4444}
+
+
+Définition à la ligne 88 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_ad6c7fcc4f12ec28c6c68e0915f84eaed}{}\index{Lesson17.\+c@{Lesson17.\+c}!texid@{texid}}
+\index{texid@{texid}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{texid}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint texid\mbox{[}2\mbox{]}}\label{_lesson17_8c_ad6c7fcc4f12ec28c6c68e0915f84eaed}
+
+
+Définition à la ligne 87 du fichier Lesson17.\+c.
+
+\hypertarget{_lesson17_8c_a6012578879a8218dde175d9cdf91a70a}{}\index{Lesson17.\+c@{Lesson17.\+c}!texture@{texture}}
+\index{texture@{texture}!Lesson17.\+c@{Lesson17.\+c}}
+\subsubsection[{texture}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint texture\mbox{[}2\mbox{]}}\label{_lesson17_8c_a6012578879a8218dde175d9cdf91a70a}
+
+
+Définition à la ligne 87 du fichier Lesson17.\+c.
+
